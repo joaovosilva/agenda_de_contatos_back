@@ -54,8 +54,6 @@ class UsersController extends Controller
             $user->password = bcrypt($data->password);
             $user->save();
 
-            $user->password = "";
-
             return $user;
         } else {
             return false;

@@ -138,4 +138,33 @@ class ContactsController extends Controller
             return false;
         }
     }
+
+    /**
+     * Delete contact
+     *
+     * @param Request $request
+     * @param $id
+     * @return array
+     */
+    public function deleteContact(Request $request, $id)
+    {
+        if (!ResponseController::validationUser()) {
+            return ResponseController::returnApi(false, null, "Autenticação Invállida");
+        }
+
+        $contact = Contacts::find($id);
+        if ($contact) {
+            $phonesController = new PhonesController();
+            $phonesController->deletePhones($id);
+
+            $addressesController = new AddressesController();
+            $addressesController->deleteAddresses($id);
+
+            $contact->delete();
+
+            return ResponseController::returnApi(true, null, "Contato excluido com sucesso");
+        } else {
+            return ResponseController::returnApi(true, null, "Contato não encontrado");
+        }
+    }
 }

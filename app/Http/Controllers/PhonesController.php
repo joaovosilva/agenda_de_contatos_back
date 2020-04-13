@@ -70,4 +70,23 @@ class PhonesController extends Controller
             return false;
         }
     }
+
+    /**
+     * Delete phone
+     *
+     * @param $id
+     * @return array
+     */
+    public function deletePhones($id)
+    {
+        $phones = Phones::where([
+            ["contact_fk", "=", $id]
+        ])->delete();
+
+        if ($phones) {
+            return $phones;
+        } else {
+            return ResponseController::returnApi(true, null, "Telefones não encontrado");
+        }
+    }
 }

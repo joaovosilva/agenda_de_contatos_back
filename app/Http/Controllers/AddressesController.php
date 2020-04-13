@@ -80,4 +80,23 @@ class AddressesController extends Controller
             return false;
         }
     }
+
+    /**
+     * Delete phone
+     *
+     * @param $id
+     * @return array
+     */
+    public function deleteAddresses($id)
+    {
+        $addresses = Addresses::where([
+            ["contact_fk", "=", $id]
+        ])->delete();
+
+        if ($addresses) {
+            return $addresses;
+        } else {
+            return ResponseController::returnApi(true, null, "Endereços não encontrado");
+        }
+    }
 }

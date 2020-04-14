@@ -14,4 +14,4 @@ Composer
 
 - Para subir o servidor no terminal: php artisan serve
 
-- Link do postman com exemplos de requisições: https://www.getpostman.com/collections/4f5ae4a64741ddd8783b
+- Link do postman com exemplos de requisições: https://www.getpostman.com/collections/956842d99e24e80cc521

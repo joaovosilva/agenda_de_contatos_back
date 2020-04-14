@@ -15,6 +15,16 @@ class UsersController extends Controller
         "name" => "required"
     ];
 
+    public function getUserById($id) {
+        $user = Users::where('user_id', '=', $id)->get()[0];
+
+        if ($user) {
+            return $user;
+        } else {
+            return ResponseController::returnApi(true, null, "Usuário não encontrado");
+        }
+    }
+
     // register an user
     public function registerUser(Request $request)
     {

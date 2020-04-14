@@ -51,6 +51,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapUserRoutes();
 
         $this->mapContactRoutes();
+
+        $this->mapEmailsRoutes();
     }
 
     /**
@@ -101,5 +103,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('contacts')
             ->namespace($this->namespace)
             ->group(base_path('routes/contacts.php'));
+    }
+
+    protected function mapEmailsRoutes()
+    {
+        Route::prefix('emails')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/emails.php'));
     }
 }
